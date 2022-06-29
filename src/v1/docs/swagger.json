@@ -1,0 +1,49 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Instastore API",
+    "description": "This API will help you to find the nearest store, according to the input coordinates you give, when calling the endpoint.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:3001/src/v1/instaStore"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Stores",
+      "description": "This endpoint will handle stores data. It is connected to a MongoDB collection using MongoDB Atlas."
+    },
+    {
+      "name": "Date",
+      "description": "This endpoint will take the date of call to the endpoint and will use it to find if the store is open, as well as the next delivery time"
+    },
+    {
+      "name": "Coordinates",
+      "description": "This endpoint will take the coordinates given by the client when calling the endpoint."
+    }
+  ],
+  "paths": {
+    "/v1/instaStore{coordinates}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "coordinates",
+            "in": "path",
+            "description": "Type the latitude and longitude",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Store successfully found"
+          }
+        }
+      }
+    }
+  }
+}
